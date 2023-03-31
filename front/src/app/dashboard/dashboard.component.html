@@ -1,0 +1,29 @@
+<div class="aaa">
+    <div class="main my-5">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup p-2">
+            <label for="chk" aria-hidden="true">Predict Age</label>
+        
+            <form [formGroup]="form"  (submit)="submit()" >
+                <div class="inputForm1">
+                    <input formControlName="s" type="text" placeholder="Speed" required="" class="form-control" >
+                    <input formControlName="a" type="text" placeholder="Acceleration" required="" class="form-control" >
+                </div>
+            <button type="submit">Predict</button>
+            </form>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+          <h3>Age Probable du Joueur</h3>
+        </div>
+        <div class="card-body">
+          <p>Speed : {{ form.getRawValue().s }}</p>
+          <p>Acceleration : {{ form.getRawValue().a }}</p>
+          <p>Age : {{ ageData }}</p>
+        </div>
+      </div>
+
+</div>
