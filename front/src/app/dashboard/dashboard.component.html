@@ -1,5 +1,5 @@
 <div class="aaa">
-    <div class="main my-5">
+    <div class="main my-5" *ngIf="!showCard" >
     <input type="checkbox" id="chk" aria-hidden="true">
 
         <div class="signup p-2">
@@ -15,7 +15,8 @@
 
         </div>
     </div>
-    <div class="card">
+    <div class="card" *ngIf="showCard" >
+      
         <div class="card-header">
           <h3>Age Probable du Joueur</h3>
         </div>
@@ -23,6 +24,8 @@
           <p>Speed : {{ form.getRawValue().s }}</p>
           <p>Acceleration : {{ form.getRawValue().a }}</p>
           <p>Age : {{ ageData }}</p>
+          <button *ngIf="showCard" (click)="hideCard()">Retour</button>
+
         </div>
       </div>
 
