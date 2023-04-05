@@ -5,7 +5,7 @@
         <div class="signup p-2">
             <label for="chk" aria-hidden="true">Predict Age</label>
         
-            <form [formGroup]="form"  (submit)="submit()" >
+            <form [formGroup]="formss"  (submit)="submit()" >
                 <div class="inputForm1">
                     <input formControlName="s" type="text" placeholder="Speed" required="" class="form-control" >
                     <input formControlName="a" type="text" placeholder="Acceleration" required="" class="form-control" >
@@ -21,8 +21,8 @@
           <h3>Age Probable du Joueur</h3>
         </div>
         <div class="card-body">
-          <p>Speed : {{ form.getRawValue().s }}</p>
-          <p>Acceleration : {{ form.getRawValue().a }}</p>
+          <p>Speed : {{ formss.getRawValue().s }}</p>
+          <p>Acceleration : {{ formss.getRawValue().a }}</p>
           <p>Age : {{ ageData }}</p>
           <button *ngIf="showCard" (click)="hideCard()">Retour</button>
 
@@ -30,3 +30,4 @@
       </div>
 
 </div>
+<div>salut</div>

@@ -1,16 +1,20 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-
+import { ModelService } from '../../services/model.service';
+import {
+  FormGroup,
+  FormBuilder,
+  FormArray,
+  FormControl,
+  Validators
+} from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  form: FormGroup |any;
+  formss!: FormGroup ;
   headers:HttpHeaders|any;
   ageData: any;
   showCard: boolean = false;
@@ -18,29 +22,26 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private formBuilder:FormBuilder ,private http : HttpClient , private router: Router) { }
+  constructor(private formBuilder:FormBuilder ,private service:ModelService) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.formss = this.formBuilder.group({
       s:'',
       a:''
       
-    });
+    }) ;
     //this.Teams = this.getTeams() 
-    console.log(this.form)
+    console.log(this.formss)
   
   }
 
 
-  submit(): void{
-
-    this.http.post('http://localhost:5000/pred',this.form.getRawValue()).subscribe(res =>{
+  submit(): void {
+    this.service.getPred(this.formss.getRawValue()).subscribe((res: any) => {
       console.log(res);
-      const resu= Object.values(res);
+      const resu :any[]= Object.values(res);
       this.ageData = parseFloat(resu[0]).toFixed(2);
       this.showCard = true;
-
-  
     });
    
   }

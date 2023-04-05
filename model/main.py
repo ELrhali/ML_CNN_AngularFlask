@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from model.cnn import predict
+from model.app import predict
 import numpy as np
 from flask_cors import CORS
 
